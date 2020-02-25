@@ -1,0 +1,104 @@
+root@ubuntu-14:~# sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+Now it needs to update `apt’s` cache before moving to Jenkins so that it can refresh the operating system’s repository for the latest packages.
+
+root@ubuntu-14:~# apt-get update
+Once your system is updated, execute the command below for the installation of Jenkins and type the `Y` key to proceed with the installation process.
+
+root@ubuntu-14:~# apt-get install Jenkins
+4
+
+The installation process will end up with starting its daemon. To check the status of Jenkins service, the command below will show you its status with running process ID. Jenkins service run with its default user name `jenkin`.
+
+root@ubuntu-14:~# service jenkins status
+Jenkins Continuous Integration Server is running with the pid 16997
+
+If you need to update the configurations of Jenkins as per your requirements, then you can find its configuration file under the `/etc/default/` directory and can make the changes.
+
+root@ubuntu-14:~# vim /etc/default/Jenkins
+Jenkins runs on port 8080 by default for HTTP connector. Now let’s open your web browser to use its GUI.
+
+Jenkins GUI Configurations
+To use and configure Jenkins, visit the following address in your browser
+
+http://your-ip-address:8080
+
+You will be surprised to see its welcome screen where you will be able to configure its different parameters for your system.
+5
+
+Click on `Manage Jenkins` and then choose the required parameter to start required configurations.
+
+6
+
+Jenkins Security Setup
+Consider enabling authentication to discourage misuse by configuring Jenkins global security parameters and then apply to save the changes as shown.
+
+wget -q -O — https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt
+
+Jenkins System Configurations
+To configure the global settings and paths for the Jenkins configurations, we’ll make a few changes to enter the correct path to your JDK, Apache Ant and Maven. Jenkins can also install these for you automatically. Once your settings are done, press the Save button to update the changes shown below.
+
+8
+
+Before you save the changes, make sure to login into Oracle’s account first if you are installing Java.
+
+9
+
+Jenkins Plugin Management
+We will use Jenkins Plugin Management to add, remove, disable or enable plugins that can extend the functionality of Jenkins.
+
+To install plugins in Jenkins, select the `Manage Plugins` link and search for the plugin you want to install. Select it from the list and click to download and install button.
+
+10
+
+Check the option to Restart Jenkins when installation is complete and no jobs are running as shown below.
+
+11
+
+After choosing the Restart option, you will be redirected to the Jenkins Restart Page, it will take a while to install the plugins you chose.
+
+Scheduling First Job with Jenkins
+To schedule your new jobs, click the `New Item` on the top left of your Jenkins Dashboard, then enter a name for the job and select `Freestyle Job`. Press OK to create a new Job.
+
+12
+
+The next page allows you to configure your job, so give it an appropriate name. From the bottom, expand the `Add Build Step` option and select  `Execute Shell` where you will put the command that you wish to execute in the terminal, we are using the `w` command here to check the system load and currently logged in users.
+
+13
+
+Once the next page is done loading, click the `Build Now` button on the sidebar of your dashboard.
+
+14
+
+Greetings! Here is the output of your first job as shown below, you can also view it in plain text, edit or delete the build if you wish to do so.
+
+15
+
+Conclusion
+Jenkins is an incredibly powerful tool. While not as nice to set up and manage as some other build servers, it is incredibly powerful with a lot of flexibility, and to be honest, it’s really hard to complain about an enterprise level build server for free.
+
+
+Related Posts:
+Cloud 101: What is the Public Cloud?
+VENOM & OpenStack: All You Need to Know
+Kubernetes Vs. Docker Swarm: A Comparison of…
+An Introduction to Kubernetes
+VEXXHOST Joins Ubuntu Certified Cloud Program as…
+Launching New Container Services Featuring Kubernetes
+Kubernetes Vs. Mesos: A Comparison of…
+Introducing New Server Networking Features
+January 21st, 2016|0 Comments
+Share This Story, Choose Your Platform!	
+FacebookTwitterLinkedinRedditTumblrGoogle+PinterestVkEmail
+Leave A Comment
+Comment
+Comment...
+
+Name (required)
+
+Email (required)
+
+Website
+ 
+Search ...
